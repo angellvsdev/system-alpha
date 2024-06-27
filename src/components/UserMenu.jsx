@@ -14,13 +14,13 @@ const SideMenu = () => {
   };
 
   return (
-    <div className="fixed top-0 right-0 z-10">
+    <div className="fixed top-3.5 right-3.5 z-10">
       <div
-        className="bg-gray-800 text-white p-4 rounded-br-lg shadow-md cursor-pointer"
+        className="p-4 text-white rounded-md rounded-b-none shadow-md cursor-pointer bg-gradient-to-r from-red-900 to-red-800"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        ☰
+        <i className="fa-solid fa-ellipsis"></i>
       </div>
 
       <Transition
@@ -33,7 +33,7 @@ const SideMenu = () => {
         leaveTo="translate-y-full"
       >
         <div
-          className="bg-white w-64 h-screen shadow-lg p-4 rounded-bl-lg"
+          className="w-64 h-screen p-4 rounded-bl-lg shadow-lg bg-slate-950"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -41,7 +41,7 @@ const SideMenu = () => {
             <li>
               <Link
                 to="/admin/profile"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-200 rounded"
+                className="block px-4 py-2 rounded hover:bg-red-900 text-slate-200"
                 onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
               >
                 Perfil
@@ -50,7 +50,7 @@ const SideMenu = () => {
             <li>
               <Link
                 to="/admin/requests"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-200 rounded"
+                className="block px-4 py-2 rounded hover:bg-red-900 text-slate-200"
                 onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
               >
                 Peticiones
@@ -59,7 +59,7 @@ const SideMenu = () => {
             <li>
               <Link
                 to="/admin/benefits"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-200 rounded"
+                className="block px-4 py-2 rounded text-slate-200 hover:bg-red-900"
                 onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
               >
                 Prestaciones
@@ -68,7 +68,7 @@ const SideMenu = () => {
             <li>
               <Link
                 to="/admin/inventory"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-200 rounded"
+                className="block px-4 py-2 rounded text-slate-200 hover:bg-red-900"
                 onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
               >
                 Inventario

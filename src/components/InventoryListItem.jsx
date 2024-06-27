@@ -70,11 +70,11 @@ const InventoryListItem = ({ item, onEdit, onDelete }) => {
         }
     };
     return (
-        <div className="flex flex-wrap sm:flex-nowrap w-full h-auto sm:h-24 my-1 sm:my-2 rounded-lg bg-slate-300 p-2 sm:p-1">
-            <button className="flex justify-center w-16 h-16 sm:w-16 sm:h-full text-2xl sm:text-4xl rounded-lg bg-slate-400">
+        <div className="flex flex-wrap w-full h-auto p-2 my-1 rounded-lg sm:flex-nowrap sm:h-24 sm:my-2 bg-slate-300 sm:p-1">
+            <button className="flex justify-center w-16 h-16 text-2xl rounded-lg sm:w-16 sm:h-full sm:text-4xl bg-slate-400">
                 <FontAwesomeIcon icon={faBox} className="self-center text-white" />
             </button>
-            <div className="flex flex-col flex-grow mx-2 sm:mx-4 my-2 plus-jakarta-sans-light">
+            <div className="flex flex-col flex-grow mx-2 my-2 sm:mx-4 plus-jakarta-sans-light">
                 {isEditing ? (
                     <>
                         <input
@@ -82,13 +82,13 @@ const InventoryListItem = ({ item, onEdit, onDelete }) => {
                             name="name"
                             value={editedItem.name}
                             onChange={handleChange}
-                            className="text-lg sm:text-xl font-extrabold text-slate-950 focus:outline-none"
+                            className="text-lg font-extrabold sm:text-xl text-slate-950 focus:outline-none"
                         />
                         <textarea
                             name="description"
                             value={editedItem.description}
                             onChange={handleChange}
-                            className="text-sm text-slate-600 font-medium mt-1 mb-2 h-12 sm:h-auto focus:outline-none"
+                            className="h-12 mt-1 mb-2 text-sm font-medium text-slate-600 sm:h-auto focus:outline-none"
                         />
                         <input
                             type="number"
@@ -100,8 +100,8 @@ const InventoryListItem = ({ item, onEdit, onDelete }) => {
                     </>
                 ) : (
                     <>
-                        <p className="text-lg sm:text-xl font-extrabold text-slate-950">{item.name}</p>
-                        <p className="text-sm text-slate-600 font-medium">{item.description}</p>
+                        <p className="text-lg font-extrabold sm:text-xl text-slate-950">{item.name}</p>
+                        <p className="text-sm font-medium text-slate-600">{item.description}</p>
                         <p className="text-xs font-bold text-slate-600">Stock: {item.quantity}</p>
                     </>
                 )}
@@ -109,25 +109,22 @@ const InventoryListItem = ({ item, onEdit, onDelete }) => {
             <div className="flex items-center ml-auto space-x-4">
                 {isEditing ? (
                     <>
-                        <button type="button" onClick={handleSaveClick} className="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-r from-green-500 to-green-700 border-2 rounded-full border-green-950 flex items-center justify-center text-white">
+                        <button type="button" onClick={handleSaveClick} className="flex items-center justify-center w-10 h-10 text-white border-2 rounded-full sm:w-16 sm:h-16 bg-gradient-to-r from-green-500 to-green-700 border-green-950">
                             <FontAwesomeIcon icon={faCheck} />
                         </button>
-                        <button type="button" onClick={handleCancelClick} className="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-r from-red-500 to-red-700 border-2 rounded-full border-red-950 flex items-center justify-center text-white">
+                        <button type="button" onClick={handleCancelClick} className="flex items-center justify-center w-10 h-10 text-white border-2 rounded-full sm:w-16 sm:h-16 bg-gradient-to-r from-red-500 to-red-700 border-red-950">
                             <FontAwesomeIcon icon={faBan} />
                         </button>
                     </>
                 ) : (
                     <>
-                        <div className="w-10 h-10 sm:w-16 sm:h-16 bg-slate-400 border-2 border-slate-950 rounded-full flex items-center justify-center text-white">
-                            <FontAwesomeIcon icon={faWrench} />
-                        </div>
                         <div className="relative ml-2">
-                            <button type="button" onClick={handleEditClick} className="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-r from-orange-800 to-orange-700 border-2 rounded-full border-orange-950 flex items-center justify-center text-white">
+                            <button type="button" onClick={handleEditClick} className="flex items-center justify-center w-10 h-10 text-white border-2 rounded-full sm:w-16 sm:h-16 bg-gradient-to-r from-orange-800 to-orange-700 border-orange-950">
                                 <FontAwesomeIcon icon={faPenToSquare} />
                             </button>
                         </div>
                         <div className="relative ml-2">
-                            <button type="button" onClick={(handleOpenDialog)} className="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-r from-red-500 to-red-700 border-2 rounded-full border-red-950 flex items-center justify-center text-white">
+                            <button type="button" onClick={(handleOpenDialog)} className="flex items-center justify-center w-10 h-10 text-white border-2 rounded-full sm:w-16 sm:h-16 bg-gradient-to-r from-red-500 to-red-700 border-red-950">
                                 <FontAwesomeIcon icon={faBan} />
                             </button>
                         </div>

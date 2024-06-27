@@ -34,14 +34,17 @@ const BenefitView = () => {
   };
 
   return (
-    <div className='flex flex-col h-screen max-h-screen min-h-full bg-gradient-to-r from-red-900 to-red-700 overflow-auto'>
+    <div className='flex flex-col h-screen max-h-screen min-h-full overflow-auto bg-gradient-to-r from-red-900 to-red-700'>
       {loading && <LoadingModal />}
-      {error && <p className="text-red-600 font-bold text-lg text-center my-4">{`Error: ${error}`}</p>}
+      {error && <p className="my-4 text-lg font-bold text-center text-red-600">{`Error: ${error}`}</p>}
 
       <div className="flex flex-col items-center justify-center flex-grow">
-        <h1 className='text-4xl font-bold text-center text-slate-300 mt-8 mb-4'>Beneficios</h1>
-        <p className='w-3/4 my-4 font-light text-center text-lg text-slate-200'>
-          Bienvenido al módulo de gestión de beneficios, donde puedes administrar todos los beneficios de los empleados.
+        <div className='flex flex-col w-screen h-60 my-14'>
+            <img src="../src/assets/undraw_notes_re_pxhw.svg" alt="Solicitud de Mensaje" className='object-contain w-full h-full' />
+        </div>
+        <h1 className='mt-8 mb-4 text-4xl font-bold text-center text-slate-300'>Beneficios</h1>
+        <p className='w-3/4 my-4 text-lg font-light text-center text-slate-200'>
+          Bienvenido al módulo de gestión de beneficios, donde puedes administrar todos los beneficios de los usuarios.
         </p>
         
         <div className="flex-grow w-3/4">

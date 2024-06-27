@@ -4,6 +4,7 @@ import { useUser } from "../../UserContext";
 import axios from "axios";
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid'
 import Button from '../../components/BaseButton'
+import { Link } from "react-router-dom";
 
 function Login() {
     const [documentId, setDocumentId] = useState('');
@@ -55,21 +56,22 @@ function Login() {
     };
 
     return (
-        <div className="min-h-screen bg-red-500 flex justify-center items-center">
-            <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
-                <h1 className="text-2xl font-bold text-center mb-6">Inicio de Sesión</h1>
+        <div className="flex items-center justify-center min-h-screen bg-red-500">
+            <Button content={<Link to="/" >Atras</Link>} icon="fa-solid fa-circle-xmark" elementContext="absolute top-4 left-4"></Button>
+            <div className="w-full max-w-sm p-8 bg-white rounded-lg shadow-lg">
+                <h1 className="mb-6 text-2xl font-bold text-center">Inicio de Sesión</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="documentId" className="block text-sm font-medium text-gray-700 w-max">Número de documento</label>
 
-                    <div className="mb-6 flex items-center">
+                    <div className="flex items-center mb-6">
                         <select
                             id="documentType"
-                            className="block w-1/6 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="block w-1/6 px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             value={documentType}
                             onChange={(e) => setDocumentType(e.target.value)}
                             required
                         >
-                            <option value="V">V</option>
+                            <option value="V" default>V</option>
                             <option value="E">E</option>
                             <option value="J">J</option>
                         </select>
@@ -79,7 +81,7 @@ function Login() {
                             placeholder="Ej: 12345678"
                             value={documentId}
                             onChange={(e) => setDocumentId(e.target.value)}
-                            className="ml-2 mt-1 block w-5/6 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="block w-5/6 px-3 py-2 mt-1 ml-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required
                         />
                     </div>
@@ -91,13 +93,13 @@ function Login() {
                             placeholder="Ej: Mi-Contraseña123"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required
                         />
                     </div>
                     {errorMessage && (
-                        <div className="flex items-center bg-red-100 text-red-500 text-sm p-2 rounded-lg mb-4">
-                            <ExclamationCircleIcon className="h-4 w-4 mr-1" aria-hidden="true" />
+                        <div className="flex items-center p-2 mb-4 text-sm text-red-500 bg-red-100 rounded-lg">
+                            <ExclamationCircleIcon className="w-4 h-4 mr-1" aria-hidden="true" />
                             <span>{errorMessage}</span>
                         </div>
                     )}
@@ -105,7 +107,7 @@ function Login() {
                         <Button
                             type="submit"
                             content="Iniciar Sesión"
-                            className="bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
+                            className="text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
                         />
                     </div>
                 </form>

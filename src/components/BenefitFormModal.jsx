@@ -115,18 +115,18 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, benefit,
                             <Listbox value={status} onChange={setStatus}>
                                 <ListboxButton className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none sm:text-sm">
                                     <span className="block truncate">{statuses[status]}</span>
-                                    <svg className="absolute inset-y-0 right-0 pr-2 pt-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg className="absolute inset-y-0 right-0 w-5 h-5 pt-1 pr-2 text-gray-400" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9.29348 10.7071L12.0001 13.4141L14.7068 10.7071C15.0995 10.3117 15.0995 9.68831 14.7068 9.29284L11.4142 6.5859L9.29348 10.7071Z" fill="currentColor" />
                                     </svg>
                                 </ListboxButton>
 
-                                <Listbox.Options className="absolute w-36 py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                <Listbox.Options className="absolute py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg w-36 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                     {Object.keys(statuses).map((statusValue) => (
                                         <Listbox.Option
                                             key={statusValue}
                                             value={statusValue}
                                             className={({ active }) =>
-                                                `${active ? 'text-amber-900 bg-amber-100' : 'text-gray-900'} cursor-default select-none relative py-2 pl-10 pr-4`
+                                                `${active ? 'text-gray-300 bg-slate-950' : 'text-gray-900'} cursor-default select-none relative py-2 pl-10 pr-4`
                                             }
                                         >
                                             {statuses[statusValue]}
@@ -148,7 +148,7 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, benefit,
                                     <h4 className="text-sm font-medium text-gray-700">Ítems Seleccionados</h4>
                                     <ul className="mt-2">
                                         {selectedItems.map((item) => (
-                                            <li key={item.id} className="flex justify-between items-center p-2 border-b border-gray-300">
+                                            <li key={item.id} className="flex items-center justify-between p-2 border-b border-gray-300">
                                                 <span>{item.name}</span>
                                                 <div className="flex items-center">
                                                     <span className="mr-2">Cantidad: {item.quantity}</span>
@@ -159,7 +159,7 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, benefit,
                                                         }}
                                                         className="text-red-600 hover:text-red-700 focus:outline-none"
                                                     >
-                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                                         </svg>
                                                     </button>

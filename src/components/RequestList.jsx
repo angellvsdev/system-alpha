@@ -4,7 +4,7 @@ import Request from './Request';
 
 const RequestList = ({ requests }) => {
     if (requests.length === 0) {
-        return <p className="text-gray-500">No hay solicitudes para mostrar.</p>;
+        return <p className="text-xl text-center text-gray-200 plus-jakarta-sans-bold">No hay solicitudes para mostrar.</p>;
     }
 
     return (

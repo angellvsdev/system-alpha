@@ -5,7 +5,7 @@ import Benefit from './Benefit';
 
 const BenefitList = ({ benefits, onUpdate, onDelete }) => {
   return (
-    <div className="self-center space-y-4">
+    <div className="self-center h-6 space-y-4">
       {benefits.map(benefit => (
         <Benefit
           key={benefit.id}

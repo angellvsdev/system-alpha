@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../components/BaseButton.jsx";
+import { Link } from "react-router-dom";
 
 export default function Header(props) {
     return(
@@ -13,8 +14,8 @@ export default function Header(props) {
                     <p className="homepage_header__titles_description plus-jakarta-sans-light">Somos la <b>Corporación Socialista</b> del Edo. Zulia, desde la localidad de todo <b>Machiques</b>, y convivimos y vivimos para ofrecerle al pueblo venezolano las herramientas necesarias para el desarrollo agrónomo y finquero de la región.</p>
                 </div>
                 <div className="homepage_header__options">
-                    <Button content="Censarme" icon="fa-solid fa-id-card-clip" />
-                    <Button content="Iniciar Sesión" icon="fa-solid fa-person-walking-arrow-right" />
+                    <Button content={<Link to="/register" >Censarme</Link>} icon="fa-solid fa-id-card-clip"></Button>
+                    <Button content={<Link to="/login" >Iniciar Sesión</Link>} icon="fa-solid fa-person-walking-arrow-right" />
                 </div>
                 <ul className="homepage_header__markers plus-jakarta-sans-medium">
                     <li className="homepage_header__markers_select"><a href="#about-us"><i class="fa-solid fa-circle-info"></i> Sobre Nosotros</a></li>

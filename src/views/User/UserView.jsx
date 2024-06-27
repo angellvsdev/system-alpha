@@ -103,62 +103,70 @@ const UserView = () => {
         <div className="container mx-auto mt-4">
             {benefit && (
                 <div className="mb-8">
-                    <h1 className="mb-4 text-2xl font-bold">Benefit Detail</h1>
+                    <h1 className="mb-4 text-2xl font-bold">Prestación</h1>
                     <BenefitDetail benefit={benefit} />
                 </div>
             )}
             
             {request ? (
-                <div className="user-requests">
-                    <h2 className="text-2xl font-bold">Detalles del Request</h2>
-                    <div className="mt-4">
-                        <p><strong>ID del Request:</strong> {request.id}</p>
-                        <p><strong>Mensaje:</strong> {request.message}</p>
+                <div className="absolute top-0 left-0 flex flex-col w-screen h-screen user-requests bg-gradient-to-r from-red-800 to-red-700">
+                    <h2 className="mx-auto my-6 text-4xl font-bold text-slate-300 bg-none plus-jakarta-sans-light">Detalles de Petición</h2>
+                    <div className="flex flex-col self-center p-5 mt-4 rounded-md shadow-md bg-red-950 shadow-black">
+                        <i className="self-center p-8 my-10 text-6xl text-center rounded-full shadow-md fa-solid fa-book bg-slate-950 text-slate-200 shadow-black"></i>
+                        <p className='text-lg text-slate-200 plus-jakarta-sans-light'><strong className='font-medium'>Identificación de Petición</strong> #{request.id}</p>
+                        <p className='mb-5 text-lg text-slate-200 plus-jakarta-sans-light'><strong className='font-medium'>Mensaje Recibido:</strong> {request.message}</p>
                         {request.user && (
                             <>
-                                <p><strong>ID del Usuario:</strong> {request.user.id}</p>
-                                <p><strong>Nombre del Usuario:</strong> {request.user.name} {request.user.surname}</p>
-                                <p><strong>Email del Usuario:</strong> {request.user.email}</p>
-                                <p><strong>Número de Identificación del Usuario:</strong> {request.user.idNumber}</p>
-                                <p><strong>Sector:</strong> {request.user.sector}</p>
-                                <p><strong>Ubicación:</strong> {request.user.location}</p>
-                                <p><strong>Género:</strong> {request.user.gender}</p>
-                                <p><strong>Edad:</strong> {request.user.age}</p>
-                                <p><strong>Teléfono:</strong> {request.user.phone}</p>
+                                <p className='mb-2 plus-jakarta-sans-light text-md text-slate-200'><strong className='font-medium'>ID del Usuario:</strong> {request.user.id}</p>
+                                <p className='mb-2 plus-jakarta-sans-light text-md text-slate-200'><strong className='font-medium'>Nombre del Usuario:</strong> {request.user.name} {request.user.surname}</p>
+                                <p className='mb-2 plus-jakarta-sans-light text-md text-slate-200'><strong className='font-medium'>Email del Usuario:</strong> {request.user.email}</p>
+                                <p className='mb-2 plus-jakarta-sans-light text-md text-slate-200'><strong className='font-medium'>Número de Identificación del Usuario:</strong> {request.user.idNumber}</p>
+                                <p className='mb-2 plus-jakarta-sans-light text-md text-slate-200'><strong className='font-medium'>Sector:</strong> {request.user.sector}</p>
+                                <p className='mb-2 plus-jakarta-sans-light text-md text-slate-200'><strong className='font-medium'>Ubicación:</strong> {request.user.location}</p>
+                                <p className='mb-2 plus-jakarta-sans-light text-md text-slate-200'><strong className='font-medium'>Género:</strong> {request.user.gender}</p>
+                                <p className='mb-2 plus-jakarta-sans-light text-md text-slate-200'><strong className='font-medium'>Edad:</strong> {request.user.age}</p>
+                                <p className='mb-2 plus-jakarta-sans-light text-md text-slate-200'><strong className='font-medium'>Teléfono:</strong> {request.user.phone}</p>
                             </>
                         )}
                     </div>
                 </div>
             ) : (
-                <div className="user-requests">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900">Crear una petición</h2>
+                <div className="absolute top-0 left-0 flex flex-col w-screen h-screen px-4 py-4 rounded-md w-90 user-request bg-gradient-to-r from-red-900 to-red-700">
+                     <button
+                        onClick={() => navigate('/user/profile')}
+                        className="fixed z-10 px-4 py-2 font-bold text-gray-900 transition bg-gray-300 rounded focus:outline-none hover:bg-gray-950 hover:text-gray-300 plus-jakarta-sans-light"
+                    >
+                        <i className="mx-2 fa-solid fa-user"></i><span className='mx-2'>Ir a mí perfil</span>
+                    </button>
+                    <div className='flex flex-col self-center w-screen h-60 my-14'>
+                        <img src="../src/assets/undraw_online_cv_re_gn0a.svg" alt="Solicitud de Mensaje" className='object-contain w-full h-full' />
+                    </div>
+                    <h2 className="self-center py-6 text-4xl font-bold tracking-tight text-slate-300 plus-jakarta-sans-light">Crear una petición</h2>
+                    <p className='self-center w-10/12 text-center text-md text-slate-300 plus-jakarta-sans-light'>Bienvenido, usuario, esta es la sección para la creación de tu petición, desde aquí, por favor, ingresa el mensaje con los motivos y el contexto de qué necesitas por parte de nuestra empresa. Somos todo oídos, adelante. <br />En el siguiente recuadro, anote el mótivo y el contexto de la solicitud. Posteriormente recibirá una página con dicha información, esta será administrada por el encargado a la brevedad con un rechazo u aprobación dependiendo las necesidades y el justificativo.</p>
+                    <p className='text-xl font-light plus-jakarta-sans-light text-slate-950'></p>
                     <form onSubmit={handleNewRequestSubmit} className="mt-4">
                         <div className="mb-4">
-                            <label htmlFor="newRequestMessage" className="block mb-2 font-bold text-gray-700">Mensaje:</label>
+                            <label htmlFor="newRequestMessage" className="block mb-2 text-xl font-bold text-slate-300 plus-jakarta-sans-light">Mensaje:</label>
                             <input
                                 id="newRequestMessage"
                                 type="text"
                                 value={newRequestMessage}
                                 onChange={(e) => setNewRequestMessage(e.target.value)}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                                className="w-full px-6 py-2 text-white border border-gray-300 rounded-lg bg-gradient-to-r from-slate-950 to-slate-800 plus-jakarta-sans-light"
                                 required
+                                placeholder='Contenido de solicitud'
                             />
                         </div>
                         <button
                             type="submit"
-                            className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+                            className="px-4 py-2 font-bold text-gray-900 transition bg-gray-300 rounded focus:outline-none hover:bg-gray-950 hover:text-gray-300 plus-jakarta-sans-light"
                         >
-                            Crear Request
+                            <i className="mx-2 fa-solid fa-inbox"></i><span className='mx-2'>Enviar Solicitud</span>
                         </button>
                     </form>
                 </div>
             )}
-            <button
-                onClick={() => navigate('/user/profile')}
-                className="fixed z-10 px-4 py-2 font-bold text-white bg-blue-500 rounded-lg shadow-lg bottom-4 right-4 hover:bg-blue-700"
-            >
-                Mi Perfil
-            </button>
+           
         </div>
     );
 };
