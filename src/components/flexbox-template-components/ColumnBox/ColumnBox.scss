@@ -1,0 +1,14 @@
+@import '../../../styles/_variables';
+
+.column_box {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    & > * {
+        margin: 2.5px;
+        flex-grow: 1;
+    }
+}
+
+@import  "../../../styles/responsive-adaptations/general_responsive.scss";
