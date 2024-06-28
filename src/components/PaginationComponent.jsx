@@ -29,9 +29,9 @@ const PaginationComponent = ({ totalPages, currentPage, onPageChange }) => {
           <nav className="flex justify-center flex-grow">
             <ul className="flex items-center">
               <Pagination.PageButton
-                activeClassName="bg-blue-500 text-white rounded-md px-4 py-2 bg-slate-950"
-                inactiveClassName="text-gray-500 hover:bg-gray-200 rounded-md px-4 py-2 bg-yellow-700"
-                className="px-6 py-2 mx-2 rounded-md text-slate-950 hover:bg-gray-200"
+                activeClassName="bg-blue-500 text-white rounded-md px-4 py-2"
+                inactiveClassName="text-gray-500 hover:bg-gray-200 rounded-md px-4 py-2"
+                className="px-4 py-2 mx-1 rounded-md text-slate-950 hover:bg-gray-200"
               />
             </ul>
           </nav>

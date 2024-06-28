@@ -16,9 +16,11 @@ const BenefitList = ({ benefits, onUpdate, onDelete, currentPage, onPageChange, 
         />
       ))}
       <PaginationComponent
+        totalPages={totalPages}
         currentPage={currentPage}
         onPageChange={onPageChange}
-        totalPages={totalPages} />
+
+      />
     </div>
   );
 };

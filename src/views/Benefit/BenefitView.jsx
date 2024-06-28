@@ -19,23 +19,26 @@ const BenefitView = () => {
     setLoading(true);
     try {
       const benefitsList = await BenefitController.getAllBenefits(currentPage);
-      setBenefits(benefitsList.content.map(benefit => Benefit.fromJson(benefit))); // Mapear a instancias de Benefit);
-      setTotalPages(benefitsList.totalPages)
+      setBenefits(benefitsList.content.map(benefit => Benefit.fromJson(benefit)));
+      setTotalPages(benefitsList.totalPages);
     } catch (error) {
       setError(error.message);
-      console.error(error.message);
+      console.error('Error loading benefits:', error);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const handleUpdateBenefit = (updatedBenefit) => {
     setBenefits(benefits.map(b => (b.id === updatedBenefit.id ? updatedBenefit : b)));
   };
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-};
+
   const handleDeleteBenefit = (benefitId) => {
     setBenefits(benefits.filter(b => b.id !== benefitId));
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -45,7 +48,7 @@ const BenefitView = () => {
 
       <div className="flex flex-col items-center justify-center flex-grow">
         <div className='flex flex-col w-screen h-60 my-14'>
-            <img src="../src/assets/undraw_notes_re_pxhw.svg" alt="Solicitud de Mensaje" className='object-contain w-full h-full' />
+          <img src="../src/assets/undraw_notes_re_pxhw.svg" alt="Solicitud de Mensaje" className='object-contain w-full h-full' />
         </div>
         <h1 className='mt-8 mb-4 text-4xl font-bold text-center text-slate-300'>Beneficios</h1>
         <p className='w-3/4 my-4 text-lg font-light text-center text-slate-200'>

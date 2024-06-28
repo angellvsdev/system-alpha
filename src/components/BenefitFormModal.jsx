@@ -177,7 +177,7 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, benefit,
                                                                 setSelectedItems(prevItems => prevItems.filter(i => i.id !== item.id));
                                                             }}
                                                         >
-                                                            <i class="fa-solid fa-trash"></i>
+                                                            <i className="fa-solid fa-trash"></i>
                                                         </IconButton>
                                                     </ListItemSuffix>
                                                 </ListItem>
@@ -200,8 +200,9 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, benefit,
                                 type="submit"
                                 className="px-4 py-2 text-sm font-bold text-gray-900 transition bg-gray-300 rounded focus:outline-none hover:bg-gray-950 hover:text-gray-300"
                             >
-                                Crear Benefit
+                                {benefit ? 'Guardar cambios' : 'Crear Prestación'}
                             </button>
+
                         </div>
                     </form>
                 </div>

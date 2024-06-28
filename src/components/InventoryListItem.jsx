@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBox, faWrench, faPenToSquare, faBan, faCheck } from '@fortawesome/free-solid-svg-icons';
 import ItemController from "../controllers/ItemController";
 import ConfirmationModal from "./ConfirmationModal";
+
 const InventoryListItem = ({ item, onEdit, onDelete }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
@@ -17,34 +18,30 @@ const InventoryListItem = ({ item, onEdit, onDelete }) => {
     };
 
     const handleSaveClick = async () => {
-        // Aquí podrías implementar la lógica para guardar los cambios
-        // Por ejemplo, podrías llamar a una función `onSave` pasando `editedItem`
         const updatedItem = await ItemController.updateItem(item.id, editedItem);
         onEdit(updatedItem.id, updatedItem);
         setIsEditing(false);
     };
+
     const handleOpenDialog = () => {
         setIsOpen(true);
-      };
-    
-      const handleCloseDialog = () => {
+    };
+
+    const handleCloseDialog = () => {
         setIsOpen(false);
-      };
-      const handleConfirmAction = (confirmed) => {
+    };
+
+    const handleConfirmAction = (confirmed) => {
         if (confirmed) {
-          handleDeleteClick();
-          console.log('Acción confirmada');
-          // Aquí puedes realizar cualquier lógica o llamada a funciones que necesites al confirmar la acción.
+            handleDeleteClick();
+            console.log('Acción confirmada');
         } else {
-          console.log('Acción cancelada');
-          // Manejar la cancelación de la acción si es necesario
+            console.log('Acción cancelada');
         }
-        setIsOpen(false); // Cerrar el diálogo después de confirmar o cancelar
-      };
-    
+        setIsOpen(false);
+    };
+
     const handleCancelClick = () => {
-        // Aquí podrías implementar la lógica para cancelar la edición
-        // Por ejemplo, podrías restaurar el estado original del item
         setEditedItem({
             name: item.name,
             description: item.description,
@@ -60,15 +57,16 @@ const InventoryListItem = ({ item, onEdit, onDelete }) => {
             [name]: value
         });
     };
+
     const handleDeleteClick = async () => {
         try {
             await ItemController.deleteItem(item.id);
             onDelete(item.id);
         } catch (error) {
             console.error('Error al eliminar el ítem:', error);
-            // Manejar el error (mostrar mensaje al usuario, etc.)
         }
     };
+
     return (
         <div className="flex flex-wrap w-full h-auto p-2 my-1 rounded-lg sm:flex-nowrap sm:h-24 sm:my-2 bg-slate-300 sm:p-1">
             <button className="flex justify-center w-16 h-16 text-2xl rounded-lg sm:w-16 sm:h-full sm:text-4xl bg-slate-400">
@@ -82,20 +80,20 @@ const InventoryListItem = ({ item, onEdit, onDelete }) => {
                             name="name"
                             value={editedItem.name}
                             onChange={handleChange}
-                            className="text-lg font-extrabold sm:text-xl text-slate-950 focus:outline-none"
+                            className="text-lg font-extrabold sm:text-xl text-slate-950 focus:outline-none bg-transparent"
                         />
                         <textarea
                             name="description"
                             value={editedItem.description}
                             onChange={handleChange}
-                            className="h-12 mt-1 mb-2 text-sm font-medium text-slate-600 sm:h-auto focus:outline-none"
+                            className="h-12 mt-1 mb-2 text-sm font-medium text-slate-600 sm:h-auto focus:outline-none bg-transparent"
                         />
                         <input
                             type="number"
                             name="quantity"
                             value={editedItem.quantity}
                             onChange={handleChange}
-                            className="text-xs font-bold text-slate-600 focus:outline-none"
+                            className="text-xs font-bold text-slate-600 focus:outline-none bg-transparent"
                         />
                     </>
                 ) : (
@@ -124,18 +122,20 @@ const InventoryListItem = ({ item, onEdit, onDelete }) => {
                             </button>
                         </div>
                         <div className="relative ml-2">
-                            <button type="button" onClick={(handleOpenDialog)} className="flex items-center justify-center w-10 h-10 text-white border-2 rounded-full sm:w-16 sm:h-16 bg-gradient-to-r from-red-500 to-red-700 border-red-950">
+                            <button type="button" onClick={handleOpenDialog} className="flex items-center justify-center w-10 h-10 text-white border-2 rounded-full sm:w-16 sm:h-16 bg-gradient-to-r from-red-500 to-red-700 border-red-950">
                                 <FontAwesomeIcon icon={faBan} />
                             </button>
                         </div>
                     </>
                 )}
             </div>
-            <ConfirmationModal isOpen={isOpen}
+            <ConfirmationModal
+                isOpen={isOpen}
                 onClose={handleCloseDialog}
                 onConfirm={handleConfirmAction}
                 title="Confirmación de Acción"
-                message="¿Estás seguro de que deseas realizar esta acción? Esta acción no se puede deshacer." />
+                message="¿Estás seguro de que deseas realizar esta acción? Esta acción no se puede deshacer."
+            />
         </div>
     );
 };
