@@ -113,7 +113,7 @@ const UserView = () => {
             
             {request ? (
                 <div className="absolute top-0 left-0 flex flex-col w-screen h-screen user-requests bg-gradient-to-r from-red-800 to-red-700">
-                    <Button content={<Link to="/user/profile" >Volver al Perfil</Link>} icon="fa-solid fa-user" elementContext="absolute top-4 left-4"></Button>
+                    <Button content={<Link to={ user.roles === "ADMIN" ? "/admin" : "/user/profile"} >Volver al Perfil</Link>} icon="fa-solid fa-user" elementContext="absolute top-4 left-4"></Button>
                     <h2 className="mx-auto my-6 text-4xl font-bold text-slate-300 bg-none plus-jakarta-sans-light">Detalles de Petición</h2>
                     <div className="flex flex-col self-center p-5 mt-4 rounded-md shadow-md bg-red-950 shadow-black">
                         <i className="self-center p-8 my-10 text-6xl text-center rounded-full shadow-md fa-solid fa-book bg-slate-950 text-slate-200 shadow-black"></i>
