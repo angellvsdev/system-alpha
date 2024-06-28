@@ -20,7 +20,7 @@ const AdminProfileBody = (props) => {
                         <UserDataField dataIdentifier="admin-phone-number" dataContent={user.phone} />
                         <UserDataField dataIdentifier="admin-location" dataContent={user.location} />
                         <UserDataField dataIdentifier="admin-age" dataContent={user.age} />
-                        <UserDataField dataIdentifier="admin-gender" dataContent={user.gender} />
+                        <UserDataField dataIdentifier="admin-gender" dataContent={user.gender === "Male" ? "Masculino" : "Femenino"} />
                     </>
                 } />
             </>

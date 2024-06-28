@@ -6,6 +6,8 @@ import LoadingModal from '../../components/LoadingModal';
 import BenefitDetail from '../../components/BenefitDetail';
 import BenefitController from '../../controllers/BenefitController';
 import RequestController from '../../controllers/RequestController';
+import Button from '../../components/BaseButton';
+import { Link } from 'react-router-dom';
 
 const UserView = () => {
     const { user } = useUser();
@@ -79,16 +81,17 @@ const UserView = () => {
     if (benefitError || requestError) {
         const error = benefitError || requestError;
         return (
-            <div className="fixed inset-0 z-10 overflow-y-auto">
+            <div className="fixed inset-0 z-10 overflow-y-auto bg-gradient-to-bl from-red-800 to-red-600">
                 <div className="flex items-center justify-center min-h-screen">
-                    <div className="w-full max-w-sm p-4 bg-white rounded-lg shadow-lg">
-                        <h3 className="text-lg font-medium text-gray-900">Error</h3>
+                    <div className="w-full max-w-xl p-4 bg-white rounded-lg shadow-lg">
+                        <h3 className="text-2xl font-medium text-gray-900"><i className='text-red-800 fa-solid fa-circle-xmark'></i> Error | <i className="text-sky-500 fa-solid fa-envelope-open-text"></i> Generación de Solicitud</h3>
                         <div className="mt-2 text-sm text-gray-500">{error.message}</div>
+                        <div className='mt-2 text-sm font-medium text-slate-900'>Nota: También puede tratarse de una solicitud no generada, en dado sea el caso, haz click en "Cerrar" para acceder a la generación de solicitud</div>
                         <div className="flex justify-end mt-4">
                             <button
                                 type="button"
                                 onClick={handleCloseDialog}
-                                className="text-sm font-medium text-gray-500 hover:text-gray-600"
+                                className="p-10 m-4 text-sm font-medium text-white rounded-md hover:text-slate-900 bg-gradient-to-r from-red-700 to-red-500"
                             >
                                 Cerrar
                             </button>
@@ -110,6 +113,7 @@ const UserView = () => {
             
             {request ? (
                 <div className="absolute top-0 left-0 flex flex-col w-screen h-screen user-requests bg-gradient-to-r from-red-800 to-red-700">
+                    <Button content={<Link to="/user/profile" >Volver al Perfil</Link>} icon="fa-solid fa-user" elementContext="absolute top-4 left-4"></Button>
                     <h2 className="mx-auto my-6 text-4xl font-bold text-slate-300 bg-none plus-jakarta-sans-light">Detalles de Petición</h2>
                     <div className="flex flex-col self-center p-5 mt-4 rounded-md shadow-md bg-red-950 shadow-black">
                         <i className="self-center p-8 my-10 text-6xl text-center rounded-full shadow-md fa-solid fa-book bg-slate-950 text-slate-200 shadow-black"></i>
