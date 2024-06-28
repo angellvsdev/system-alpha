@@ -41,37 +41,38 @@ const SideMenu = () => {
             <li>
               <Link
                 to="/admin/profile"
-                className="block px-4 py-2 rounded hover:bg-red-900 text-slate-200"
+                className="block px-4 py-2 rounded hover:bg-red-900 text-slate-200 plus-jakarta-sans-light"
                 onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
               >
-                Perfil
+                <p><i className="pr-2 fa-solid fa-user-gear"></i> Perfil</p>
+
               </Link>
             </li>
             <li>
               <Link
                 to="/admin/requests"
-                className="block px-4 py-2 rounded hover:bg-red-900 text-slate-200"
+                className="block px-4 py-2 rounded hover:bg-red-900 text-slate-200 plus-jakarta-sans-light"
                 onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
               >
-                Peticiones
+                <p><i className='pr-2 fa-solid fa-inbox'></i> Solicitudes</p>
               </Link>
             </li>
             <li>
               <Link
                 to="/admin/benefits"
-                className="block px-4 py-2 rounded text-slate-200 hover:bg-red-900"
+                className="block px-4 py-2 rounded text-slate-200 hover:bg-red-900 plus-jakarta-sans-light"
                 onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
               >
-                Prestaciones
+                <p><i className='pr-2 fa-solid fa-leaf'></i> Prestaciones</p>
               </Link>
             </li>
             <li>
               <Link
                 to="/admin/inventory"
-                className="block px-4 py-2 rounded text-slate-200 hover:bg-red-900"
+                className="block px-4 py-2 rounded text-slate-200 hover:bg-red-900 plus-jakarta-sans-light"
                 onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
               >
-                Inventario
+                <p><i className="pr-2 fa-solid fa-boxes-stacked"></i> Inventario</p>
               </Link>
             </li>
           </ul>
