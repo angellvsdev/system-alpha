@@ -7,28 +7,29 @@ const InventoryItemAddingModal = ({ isOpen, closeModal, onItemAdded }) => {
     const [productName, setProductName] = useState("");
     const [productDescription, setProductDescription] = useState("");
     const [quantityInStock, setQuantityInStock] = useState("");
+
+    // Maneja la creación del item
     const handleCreateItem = async () => {
         try {
-            console.log(productName, productDescription, quantityInStock);
             const newItem = {
                 name: productName,
                 description: productDescription,
                 quantity: quantityInStock,
             };
-            console.log(newItem)
             const createdItem = await ItemController.createItem(newItem);
-
             onItemAdded(createdItem);
+            // Resetea los campos después de agregar el item
             setProductName("");
             setProductDescription("");
             setQuantityInStock("");
-            // Close modal after successful creation
+            // Cierra el modal
             closeModal();
         } catch (error) {
             console.error('Error creating item', error);
-            // Handle error (e.g., show an error message to the user)
         }
     };
+
+    // Estilos personalizados para el modal
     const customStyles = {
         overlay: {
             position: "fixed",
@@ -40,20 +41,6 @@ const InventoryItemAddingModal = ({ isOpen, closeModal, onItemAdded }) => {
             zIndex: 9999,
             backdropFilter: "blur(8px)",
         },
-        // content: {
-        //     position: "absolute",
-        //     top: "50%",
-        //     left: "50%",
-        //     transform: "translate(-50%, -50%)",
-        //     maxWidth: "90%",
-        //     width: "fit-content",
-        //     maxHeight: "90%",
-        //     overflow: "auto",
-        //     borderRadius: "0.75rem",
-        //     boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-        //     backgroundColor: "#FFFFFF",
-        //     padding: "2rem",
-        // }
     };
 
     return (
@@ -62,10 +49,10 @@ const InventoryItemAddingModal = ({ isOpen, closeModal, onItemAdded }) => {
             onRequestClose={closeModal}
             contentLabel="Añadir Item"
             style={customStyles}
-            className="flex justify-center items-center flex-wrap h-screen"
+            className="flex justify-center items-center h-screen overflow-y-scroll no-scrollbar"
             ariaHideApp={false} // Para evitar warnings de accesibilidad en React Modal
         >
-            <div className="w-11/12 md:w-3/5 lg:w-2/5 xl:w-1/3 bg-white p-8 rounded-lg shadow-md">
+            <div className="w-11/12 md:w-3/5 lg:w-2/5 xl:w-1/3 bg-white p-8 rounded-lg shadow-md max-h-full overflow-y-auto">
                 <div className="flex flex-col items-center">
                     <button onClick={closeModal} className="self-end mb-2 px-4 py-2 font-medium text-white bg-red-900 rounded-md hover:bg-red-700">Cerrar</button>
                     <img src="/src/assets/undraw_order_delivered_re_v4ab (1).svg" alt="Mujer cargando cajas" className="w-24 h-auto mb-8" />
@@ -74,7 +61,7 @@ const InventoryItemAddingModal = ({ isOpen, closeModal, onItemAdded }) => {
                         <p className="text-sm text-gray-600 mb-6">Bienvenido, para añadir un nuevo elemento al inventario de la empresa, rellena todos los campos y presiona el botón "Listo".</p>
                     </div>
                     <div className="w-full">
-                        <div className="flex flex-col">
+                        <div className="flex flex-col space-y-4">
                             <InventoryItemAddingModalInput
                                 inputTitle="Nombre del Producto"
                                 value={productName}

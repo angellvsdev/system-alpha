@@ -8,16 +8,19 @@ const BenefitView = () => {
   const [benefits, setBenefits] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     loadBenefits();
-  }, []);
+  }, [currentPage]);
 
   const loadBenefits = async () => {
     setLoading(true);
     try {
-      const benefitsList = await BenefitController.getAllBenefits();
-      setBenefits(benefitsList);
+      const benefitsList = await BenefitController.getAllBenefits(currentPage);
+      setBenefits(benefitsList.content.map(benefit => Benefit.fromJson(benefit))); // Mapear a instancias de Benefit);
+      setTotalPages(benefitsList.totalPages)
     } catch (error) {
       setError(error.message);
       console.error(error.message);
@@ -28,7 +31,9 @@ const BenefitView = () => {
   const handleUpdateBenefit = (updatedBenefit) => {
     setBenefits(benefits.map(b => (b.id === updatedBenefit.id ? updatedBenefit : b)));
   };
-
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+};
   const handleDeleteBenefit = (benefitId) => {
     setBenefits(benefits.filter(b => b.id !== benefitId));
   };
@@ -52,6 +57,9 @@ const BenefitView = () => {
             benefits={benefits}
             onUpdate={handleUpdateBenefit}
             onDelete={handleDeleteBenefit}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+            totalPages={totalPages}
           />
         </div>
       </div>

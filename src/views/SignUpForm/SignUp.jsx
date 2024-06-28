@@ -14,7 +14,7 @@ function SignUp() {
     userPassword: "",
     userPasswordConfirm: "",
     userDocumentId: "",
-    documentType: "",
+    documentType: "V",
     userLocation: "",
     sector: "",
     userNumber: "",
@@ -89,8 +89,8 @@ function SignUp() {
         setErrorMessage("Ocurrió un error al registrarse.");
       }
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        setErrorMessage(error.response.data.message);
+      if (error.response && error.response.data.error) {
+        setErrorMessage(error.response.data.error);
       } else {
         setErrorMessage("Error al registrar usuario.");
       }

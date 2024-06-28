@@ -18,8 +18,8 @@ export default function Header(props) {
                     <Button content={<Link to="/login" >Iniciar Sesión</Link>} icon="fa-solid fa-person-walking-arrow-right" />
                 </div>
                 <ul className="homepage_header__markers plus-jakarta-sans-medium">
-                    <li className="homepage_header__markers_select"><a href="#about-us"><i class="fa-solid fa-circle-info"></i> Sobre Nosotros</a></li>
-                    <li className="homepage_header__markers_select"><a href="#requirements"><i class="fa-solid fa-circle-info"></i> Requisitos del Servicio</a></li>
+                    <li className="homepage_header__markers_select"><a href="#about-us"><i className="fa-solid fa-circle-info"></i> Sobre Nosotros</a></li>
+                    <li className="homepage_header__markers_select"><a href="#requirements"><i className="fa-solid fa-circle-info"></i> Requisitos del Servicio</a></li>
                 </ul>
             </section>
         </>

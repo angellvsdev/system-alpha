@@ -1,16 +1,19 @@
 // controllers/BenefitController.js
 import axios from 'axios';
 import Benefit from '../models/BenefitModel'; // Asegúrate de importar el modelo Benefit
-import benefits from '../mocks/benefitMocks'; // Importa los mocks de beneficios
 
 const API_URL = 'http://localhost:8080/api/benefits'; // Asegúrate de que la URL es correcta
 
 const BenefitController = {
-    getAllBenefits: async () => {
+    getAllBenefits: async (pageNumber) => {
         try {
             // Consulta a la API real si hay conexión
-            const response = await axios.get(API_URL);
-            return response.data.content.map(benefit => Benefit.fromJson(benefit)); // Mapear a instancias de Benefit
+            const response = await axios.get(API_URL, {
+                    params: {
+                        page: pageNumber // Envía el número de página como parámetro
+                    }
+                });
+            return response.data
         } catch (error) {
             throw new Error(`Error al obtener los beneficios: ${error.message}`);
         }

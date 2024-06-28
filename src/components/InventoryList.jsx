@@ -87,7 +87,7 @@ const InventoryList = () => {
     const displayedItems = searchTerm === '' ? items : searchResults;
 
     return (
-        <div className="flex flex-col w-full h-auto p-2 mx-auto my-8 lg:w-4/5 lg:p-1 lg:my-12 lg:ml-8 xl:mx-auto xl:max-h-96">
+        <div className="flex flex-col w-full h-auto p-2 mx-auto my-8 lg:w-4/5 lg:p-1 lg:my-12 lg:ml-8 xl:mx-auto">
             <div className="plus-jakarta-sans-bold w-full h-12 bg-gradient-to-r from-emerald-700 from-10% via-emerald-600 via-30% to-emerald-500 to-90% rounded-lg mb-2 lg:mb-4">
                 <button
                     onClick={openModal}

@@ -6,7 +6,7 @@ const SearchInput = ({ onSearch }) => {
     const [searchTimer, setSearchTimer] = useState(null);
 
     const handleSearchChange = (e) => {
-        const searchTerm = e.target.value.trim();
+        const searchTerm = e.target.value.trimStart();
         setSearchTerm(searchTerm);
 
         if (searchTimer) {

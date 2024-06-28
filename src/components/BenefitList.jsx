@@ -2,8 +2,9 @@
 
 import React from 'react';
 import Benefit from './Benefit';
+import PaginationComponent from './PaginationComponent';
 
-const BenefitList = ({ benefits, onUpdate, onDelete }) => {
+const BenefitList = ({ benefits, onUpdate, onDelete, currentPage, onPageChange, totalPages }) => {
   return (
     <div className="self-center h-6 space-y-4">
       {benefits.map(benefit => (
@@ -14,6 +15,10 @@ const BenefitList = ({ benefits, onUpdate, onDelete }) => {
           onDelete={onDelete}
         />
       ))}
+      <PaginationComponent
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+        totalPages={totalPages} />
     </div>
   );
 };

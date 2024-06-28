@@ -8,7 +8,7 @@ import Item from '../../models/ItemModel';
 const InventoryView = () => {
     return (
         <>
-            <div className="w-screen h-screen bg-white bg-gradient-to-r from-yellow-600 to-yellow-500">
+            <div className="w-screen h-screen bg-white bg-gradient-to-r from-yellow-600 to-yellow-500 overflow-y-auto no-scrollbar">
                 <div className="flex flex-col w-screen m-auto bg-gray-400 h-1/3">
                     <div className="flex items-start content-center w-1/2 mx-auto h-2/5">
                         <img className="object-cover w-10/12 mx-auto fa-solid fa-cart-flatbed xl:w-6/12" src="/src/assets/undraw_logistics_x-4-dc.svg" />

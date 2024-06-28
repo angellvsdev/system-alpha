@@ -2,13 +2,11 @@ import { useState } from 'react';
 import { Transition } from '@headlessui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useUser } from '../UserContext';
-
-const UserMenu = () => {
-  const { user, setUser } = useUser();
+import { useUser } from '../UserContext'
+const AdminMenu = () => {
+  const { setUser } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-
   const handleMouseEnter = () => {
     setIsOpen(true);
   };
@@ -17,15 +15,19 @@ const UserMenu = () => {
     setIsOpen(false);
   };
 
-  const handleLogout = async () => {
+  const handleLogout = () => {
     try {
-      await axios.post('http://localhost:8080/api/logout');
+      axios.post('http://localhost:8080/api/logout')
       setUser(null);
+      // Por ejemplo, limpiar el estado de autenticación o redirigir al usuario a la página de login
       setIsOpen(false); // Cerrar el menú al hacer logout
-      navigate('/login');
+      // Implementa tu lógica de logout aquí 
+      navigate('/login')
+
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
+
   };
 
   return (
@@ -55,7 +57,7 @@ const UserMenu = () => {
           <ul className="space-y-2">
             <li>
               <Link
-                to={`/user/profile`}
+                to="/admin/profile"
                 className="block px-4 py-2 rounded hover:bg-red-900 text-slate-200 plus-jakarta-sans-light"
                 onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
               >
@@ -64,18 +66,36 @@ const UserMenu = () => {
             </li>
             <li>
               <Link
-                to={'/user'}
+                to="/admin/requests"
                 className="block px-4 py-2 rounded hover:bg-red-900 text-slate-200 plus-jakarta-sans-light"
                 onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
               >
-                <p><i className='pr-2 fa-solid fa-info-circle'></i> Estado</p>
+                <p><i className='pr-2 fa-solid fa-inbox'></i> Solicitudes</p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/admin/benefits"
+                className="block px-4 py-2 rounded text-slate-200 hover:bg-red-900 plus-jakarta-sans-light"
+                onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
+              >
+                <p><i className='pr-2 fa-solid fa-leaf'></i> Prestaciones</p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/admin/inventory"
+                className="block px-4 py-2 rounded text-slate-200 hover:bg-red-900 plus-jakarta-sans-light"
+                onClick={() => setIsOpen(false)} // Cerrar el menú al hacer clic en un enlace
+              >
+                <p><i className="pr-2 fa-solid fa-boxes-stacked"></i> Inventario</p>
               </Link>
             </li>
           </ul>
 
           {/* Botón de Logout en la parte inferior */}
           <button
-            className="block mb-20 w-full px-4 py-2 rounded text-slate-200 hover:bg-red-900 plus-jakarta-sans-light"
+            className="block mb-20 mt-auto w-full px-4 py-2 rounded text-slate-200 hover:bg-red-900 plus-jakarta-sans-light"
             onClick={handleLogout}
           >
             <p><i className="pr-2 fa-solid fa-sign-out"></i> Salir</p>
@@ -86,4 +106,4 @@ const UserMenu = () => {
   );
 };
 
-export default UserMenu;
+export default AdminMenu;

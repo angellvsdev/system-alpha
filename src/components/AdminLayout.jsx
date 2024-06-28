@@ -1,9 +1,9 @@
 import React from "react";
-import UserMenu from "./UserMenu";
+import AdminMenu from './AdminMenu'
 function AdminLayout({children}){
     return(
         <div>
-            <UserMenu/>
+            <AdminMenu />
             {children}
         </div>
     )

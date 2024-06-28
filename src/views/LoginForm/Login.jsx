@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 function Login() {
     const [documentId, setDocumentId] = useState('');
     const [password, setPassword] = useState('');
-    const [documentType, setDocumentType] = useState('');
+    const [documentType, setDocumentType] = useState('V');
     const [errorMessage, setErrorMessage] = useState('');
     const { setUser } = useUser();
     const navigate = useNavigate();
@@ -47,8 +47,8 @@ function Login() {
                 setErrorMessage('Ocurrió un error al iniciar sesión.');
             }
         } catch (error) {
-            if (error.response && error.response.data && error.response.data.message) {
-                setErrorMessage(error.response.data.message);
+            if (error.response && error.response.data && error.response.data.error) {
+                setErrorMessage(error.response.data.error);
             } else {
                 setErrorMessage('Error al iniciar sesión.');
             }
