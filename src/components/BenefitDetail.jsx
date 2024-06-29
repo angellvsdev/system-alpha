@@ -15,19 +15,19 @@ const BenefitDetail = ({ benefit }) => {
 
   return (
     <div className="container h-screen mx-auto">
-      <div className="absolute top-0 left-0 flex overflow-y-scroll no-scrollbar flex-col w-screen h-screen bg-gradient-to-r from-red-800 to-red-700">
+      <div className="absolute top-0 left-0 flex flex-col w-screen h-screen overflow-y-scroll no-scrollbar bg-gradient-to-r from-red-800 to-red-700">
         <h2 className="mx-auto my-6 text-4xl font-bold text-slate-300 bg-none plus-jakarta-sans-light">
           Detalles del Beneficio
         </h2>
         <div className="flex flex-col self-center p-5 mt-4 rounded-md shadow-md bg-red-950 shadow-black">
           {/* Card para mostrar los detalles del beneficio */}
-          <Card className="max-w-3xl w-full bg-red-950 shadow-lg rounded-lg border border-gray-200">
+          <Card className="w-full max-w-3xl rounded-lg shadow-lg bg-slate-200">
             <CardBody>
               {/* Título principal del detalle del beneficio */}
               <Typography
                 variant="h4"
                 color="gray"
-                className="text-center mb-6 plus-jakarta-sans-light"
+                className="mb-6 text-center text-slate-950 plus-jakarta-sans-light"
               >
                 Detalles del Beneficio
               </Typography>
@@ -37,7 +37,7 @@ const BenefitDetail = ({ benefit }) => {
                 <Typography
                   variant="h6"
                   color="gray"
-                  className="font-semibold plus-jakarta-sans-light"
+                  className="font-semibold plus-jakarta-sans-light text-slate-950"
                 >
                   ID:
                 </Typography>
@@ -49,7 +49,7 @@ const BenefitDetail = ({ benefit }) => {
                 <Typography
                   variant="h6"
                   color="gray"
-                  className="font-semibold plus-jakarta-sans-light"
+                  className="font-semibold plus-jakarta-sans-light text-slate-950"
                 >
                   Usuario:
                 </Typography>
@@ -61,7 +61,7 @@ const BenefitDetail = ({ benefit }) => {
                 <Typography
                   variant="h6"
                   color="gray"
-                  className="font-semibold plus-jakarta-sans-light"
+                  className="font-semibold plus-jakarta-sans-light text-slate-950"
                 >
                   Detalles:
                 </Typography>
@@ -73,7 +73,7 @@ const BenefitDetail = ({ benefit }) => {
                 <Typography
                   variant="h6"
                   color="gray"
-                  className="font-semibold plus-jakarta-sans-light"
+                  className="font-semibold plus-jakarta-sans-light text-slate-950"
                 >
                   Solicitud:
                 </Typography>
@@ -85,7 +85,7 @@ const BenefitDetail = ({ benefit }) => {
                 <Typography
                   variant="h6"
                   color="gray"
-                  className="font-semibold plus-jakarta-sans-light"
+                  className="font-semibold plus-jakarta-sans-light text-slate-950"
                 >
                   Estado:
                 </Typography>
@@ -97,7 +97,7 @@ const BenefitDetail = ({ benefit }) => {
                 <Typography
                   variant="h6"
                   color="gray"
-                  className="font-semibold plus-jakarta-sans-light"
+                  className="font-semibold plus-jakarta-sans-light text-slate-950"
                 >
                   Fecha de Creación:
                 </Typography>
@@ -109,7 +109,7 @@ const BenefitDetail = ({ benefit }) => {
                 <Typography
                   variant="h6"
                   color="gray"
-                  className="font-semibold plus-jakarta-sans-light"
+                  className="font-semibold plus-jakarta-sans-light text-slate-950"
                 >
                   Ítems del Beneficio:
                 </Typography>
