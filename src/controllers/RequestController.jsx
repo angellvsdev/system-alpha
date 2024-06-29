@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Request from '../models/RequestModel';
 
-const API_URL = 'http://localhost:8080/api/requests'; // Asegúrate de que la URL es correcta
+const API_URL = '/api/requests'; // Asegúrate de que la URL es correcta
 
 const isOnline = async () => {
     try {

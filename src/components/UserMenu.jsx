@@ -19,7 +19,7 @@ const UserMenu = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:8080/api/logout');
+      await axios.post('/api/logout');
       setUser(null);
       setIsOpen(false); // Cerrar el menú al hacer logout
       navigate('/login');

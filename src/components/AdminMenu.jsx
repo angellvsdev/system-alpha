@@ -17,7 +17,7 @@ const AdminMenu = () => {
 
   const handleLogout = () => {
     try {
-      axios.post('http://localhost:8080/api/logout')
+      axios.post('/api/logout')
       setUser(null);
       // Por ejemplo, limpiar el estado de autenticación o redirigir al usuario a la página de login
       setIsOpen(false); // Cerrar el menú al hacer logout

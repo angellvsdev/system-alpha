@@ -2,7 +2,7 @@
 import axios from 'axios';
 import ItemModel from '../models/ItemModel';
 
-const API_URL = 'http://localhost:8080/api/items'; // Asegúrate de que la URL es correcta
+const API_URL = '/api/items'; // Asegúrate de que la URL es correcta
 
 const ItemController = {
     fetchItems: async (pageNumber) => {

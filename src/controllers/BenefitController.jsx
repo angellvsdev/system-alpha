@@ -2,7 +2,7 @@
 import axios from 'axios';
 import Benefit from '../models/BenefitModel'; // Asegúrate de importar el modelo Benefit
 
-const API_URL = 'http://localhost:8080/api/benefits'; // Asegúrate de que la URL es correcta
+const API_URL = '/api/benefits'; // Asegúrate de que la URL es correcta
 
 const BenefitController = {
     getAllBenefits: async (pageNumber) => {
