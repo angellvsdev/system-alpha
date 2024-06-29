@@ -237,7 +237,7 @@ html:root {
 
 .information_section {
   width: 100vw;
-  height: 70vh;
+  height: 100vh;
   background: #ececec;
 }
 .information_section__elements {

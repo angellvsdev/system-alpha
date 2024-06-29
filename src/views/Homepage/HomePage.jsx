@@ -11,7 +11,7 @@ export default function Index(props) {
         <>
             <Header />
             <div className="information_title_container">
-                <h2 className="information_title plus-jakarta-sans-bold"><i className="fa-solid fa-wheat-awn"></i> ¿Quienes somos?</h2>
+                <h2 className="w-full h-6 text-center information_title plus-jakarta-sans-bold"><i className="fa-solid fa-wheat-awn"></i> ¿Quienes somos?</h2>
             </div>
             <InformationModule />
             <HomepageFooter />

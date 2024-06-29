@@ -3,7 +3,7 @@ import React from "react";
 export default function HomepageFooter(props) {
     return(
         <>
-            <footer className="homepage_footer">
+            <footer className="pb-12 homepage_footer lg:h-screen xl:h-4/5">
                 <div className="homepage_footer__developer_credits plus-jakarta-sans-bold">
                     <p className="developer_credits__credit_line"><i className="fa-solid fa-laptop-code"></i> Proyecto creado y dirigido por <a target="blank" href="https://github.com/angellvsdev">@angellsdev</a>. Todos los derechos reservados. ©</p>
                 </div>
