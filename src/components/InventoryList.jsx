@@ -1,89 +1,41 @@
-import React, { useState, useEffect } from "react";
-import InventoryListItem from "./InventoryListItem.jsx";
-import InventoryItemAddingModal from "./InventoryItemAddingModal.jsx";
-import PaginationComponent from "./PaginationComponent.jsx";
-import ItemController from "../controllers/ItemController.jsx";
-import Item from "../models/ItemModel.jsx";
-import SearchInput from "./SearchInput";
+import React from 'react';
+import InventoryListItem from './InventoryListItem.jsx';
+import InventoryItemAddingModal from './InventoryItemAddingModal.jsx';
+import PaginationComponent from './PaginationComponent.jsx';
+import SearchInput from './SearchInput';
 
-const InventoryList = () => {
-    const [items, setItems] = useState([]);
-    const [currentPage, setCurrentPage] = useState(0);
-    const [totalPages, setTotalPages] = useState(0);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
+const InventoryList = ({
+    items,
+    currentPage,
+    totalPages,
+    loading,
+    error,
+    searchTerm,
+    searchResults,
+    onFetchItems,
+    onPageChange,
+    onSearch,
+    onClearSearch
+}) => {
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
 
-    useEffect(() => {
-        fetchItems(currentPage); // Cargar la primera página al montar el componente
-    }, [currentPage]);
-
-    const fetchItems = async (pageNumber) => {
-        try {
-            setLoading(true);
-            const data = await ItemController.fetchItems(pageNumber);
-            setItems(data.content.map(item => new Item(item.id, item.name, item.description, item.quantity, item.benefitItems)));
-            setTotalPages(data.totalPages);
-            setLoading(false);
-        } catch (error) {
-            console.error('Error fetching items', error);
-            setLoading(false);
-            setError('Error al cargar los ítems');
-        }
-    };
-
-    const handlePageChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
-
-    const handleItemAdded = (newItem) => {
-        setItems([...items, newItem]);
-    };
-
+    // Abrir el modal de agregar ítem
     const openModal = () => {
         setIsModalOpen(true);
     };
 
-    const handleItemEdited = (itemId, editedItem) => {
-        const updatedItems = items.map(item =>
-            item.id === itemId ? { ...item, ...editedItem } : item
-        );
-        setItems(updatedItems);
-    };
-
-    const handleItemDeleted = (itemId) => {
-        const updatedItems = items.filter(item => item.id !== itemId);
-        setItems(updatedItems);
-    };
-
+    // Cerrar el modal de agregar ítem
     const closeModal = () => {
         setIsModalOpen(false);
     };
 
-    const handleSearch = async (searchTerm) => {
-        setSearchTerm(searchTerm);
-        try {
-            setLoading(true);
-            const searchResults = await ItemController.searchItems(searchTerm); // Aquí debes ajustar según cómo se implementa searchItems en ItemController
-            setSearchResults(searchResults.content.map(item => new Item(item.id, item.name, item.description, item.quantity, item.benefitItems)));
-            setLoading(false);
-            setError(null);
-        } catch (error) {
-            console.error('Error searching items', error);
-            setLoading(false);
-            setError('Error al buscar los ítems');
-            setSearchResults([]);
-        }
+    // Manejar la adición de un nuevo ítem
+    const handleItemAdded = (newItem) => {
+        // Actualizar la lista de ítems en `InventoryView` si es necesario
+        onFetchItems(currentPage);  // Volver a cargar los ítems después de agregar uno nuevo
     };
 
-    const handleClearSearch = () => {
-        setSearchTerm('');
-        setSearchResults([]);
-    };
-
-    // Determinar qué lista mostrar (todos los items o los resultados de la búsqueda)
+    // Determinar qué lista mostrar (todos los ítems o los resultados de la búsqueda)
     const displayedItems = searchTerm === '' ? items : searchResults;
 
     return (
@@ -98,7 +50,11 @@ const InventoryList = () => {
                 </button>
             </div>
             {/* Barra de búsqueda utilizando SearchInput */}
-            <SearchInput onSearch={handleSearch} />
+            <SearchInput
+                onSearch={onSearch}
+                onClearSearch={onClearSearch}
+                searchTerm={searchTerm}
+            />
 
             <div className="flex flex-col flex-grow w-full p-2 lg:p-1 my-1 lg:my-0.5 bg-yellow-500 rounded-lg overflow-y-auto max-h-96 lg:max-h-72">
                 {/* Mostrar mensajes de carga, error o resultados */}
@@ -110,10 +66,17 @@ const InventoryList = () => {
                     <p className="text-gray-500 text-center">No encontrado</p>
                 ) : (
                     displayedItems.map((item) => (
-                        <InventoryListItem key={item.id}
+                        <InventoryListItem
+                            key={item.id}
                             item={item}
-                            onEdit={handleItemEdited}
-                            onDelete={handleItemDeleted}
+                            onEdit={(itemId, editedItem) => {
+                                // Actualizar la lista de ítems en `InventoryView` si es necesario
+                                onFetchItems(currentPage);  // Volver a cargar los ítems después de editar uno
+                            }}
+                            onDelete={(itemId) => {
+                                // Actualizar la lista de ítems en `InventoryView` si es necesario
+                                onFetchItems(currentPage);  // Volver a cargar los ítems después de eliminar uno
+                            }}
                         />
                     ))
                 )}
@@ -121,7 +84,7 @@ const InventoryList = () => {
             <PaginationComponent
                 currentPage={currentPage}
                 totalPages={totalPages}
-                onPageChange={handlePageChange}
+                onPageChange={onPageChange}
             />
             <InventoryItemAddingModal
                 isOpen={isModalOpen}

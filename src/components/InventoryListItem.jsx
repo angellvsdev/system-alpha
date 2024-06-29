@@ -80,20 +80,20 @@ const InventoryListItem = ({ item, onEdit, onDelete }) => {
                             name="name"
                             value={editedItem.name}
                             onChange={handleChange}
-                            className="font-extrabold rounded-md sm:text-xl text-slate-200 focus:outline-none bg-slate-800"
+                            className="text-lg font-extrabold sm:text-xl text-slate-950 focus:outline-none bg-transparent"
                         />
                         <textarea
                             name="description"
                             value={editedItem.description}
                             onChange={handleChange}
-                            className="h-12 mt-1 mb-2 text-sm font-medium bg-transparent text-slate-200 bg-slate-800 sm:h-auto focus:outline-none"
+                            className="h-12 mt-1 mb-2 text-sm font-medium text-slate-600 sm:h-auto focus:outline-none bg-transparent"
                         />
                         <input
                             type="number"
                             name="quantity"
                             value={editedItem.quantity}
                             onChange={handleChange}
-                            className="text-xs font-bold bg-transparent  focus:outline-none text-slate-200 bg-slate-800"
+                            className="text-xs font-bold text-slate-600 focus:outline-none bg-transparent"
                         />
                     </>
                 ) : (
